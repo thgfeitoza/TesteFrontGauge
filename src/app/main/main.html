@@ -1,0 +1,78 @@
+<div layout="vertical" layout-fill layout="column">
+  <md-content flex="grow">
+    <section class="jumbotron">
+      <h1>Gráfico de Usuários Influentes</h1>
+    </section>
+
+    <div class="techs" layout-align="center">
+        <span style="margin-top: 5px; margin-right: 10px;">Selecione a empresa: </span>
+      <div
+        isteven-multi-select
+        input-model="main.brands"
+        output-model="selectedBrands"
+        button-label="icon name"
+        item-label="icon name"
+        tick-property="ticked"
+
+      ></div>
+    </div>
+
+    <md-content layout-padding></md-content>
+
+    <md-divider></md-divider>
+
+    <md-content layout-padding></md-content>
+
+    <div class="techs" layout-align="center">
+      <div flex="5"></div>
+      <div flex="50">
+        <section class="jumbotron">
+          <h3>Top 5 - Mais Interações</h3>
+        </section>
+      </div>
+
+      <div flex="grow">
+      <div google-chart chart="main.barChart" style="min-height:400px; width:80%;"></div>
+        </div>
+    </div>
+
+    <md-content layout-padding></md-content>
+
+    <md-divider></md-divider>
+
+    <md-content layout-padding></md-content>
+
+    <div class="techs" layout-align="center">
+      <md-toolbar layout="row" class="md-hue-3">
+        <div class="md-toolbar-tools">
+          <span>Lista de Usuários</span>
+        </div>
+      </md-toolbar>
+        <md-list flex al>
+          <md-list-item  class="md-3-line" ng-repeat="user in main.users | orderBy:'interactions.length': true">
+            <h1 class="md-avatar" >{{user.interactions.length}}</h1>
+
+            <div class="md-list-item-text" layout="column">
+              <h3>{{user.name.title}} {{user.name.first}} {{user.name.last}}</h3>
+            </div>
+
+            <md-divider ng-if="!$last"></md-divider>
+          </md-list-item>
+        </md-list>
+    </div>
+
+    <!--<div class="techs" layout-align="center">
+      <md-card ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
+        <md-card-content>
+          <img class="pull-right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
+          <h3 class="md-title">{{ awesomeThing.title }}</h3>
+          <p>{{ awesomeThing.description }}</p>
+        </md-card-content>
+        <div class="md-action-buttons">
+          <md-button ng-href="{{ awesomeThing.url }}">Website</md-button>
+        </div>
+      </md-card>
+    </div>-->
+  </md-content>
+
+</div>
